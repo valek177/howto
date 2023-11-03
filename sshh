@@ -1,0 +1,35 @@
+#!/bin/bash
+
+user=
+pass=
+host="$1"
+key=~/.ssh/id_rsa.pub
+
+if [ "$#" -ne 1 ]; then
+    >&2 echo "Usage: $0 <host>"
+    exit 1
+fi
+
+
+# Don't forget to generate a secure key
+if [ ! -f "$key" ]; then
+    >&2 echo "Secure key not found, try: ssh-keygen -t rsa -b 2048"
+    exit 2
+fi
+
+if ! ping -c 1 "$host" &>/dev/null; then
+    >&2 echo "Host '$1' is unreachable"
+    exit 3
+fi
+
+# Remove the host from the host list
+ssh-keygen -q -f ~/.ssh/known_hosts -R "$host"
+
+cmd=''
+if which sshpass &>/dev/null; then
+    cmd="sshpass -p $pass"
+else
+    echo Use this passphrase: $pass
+fi
+# Copy the public key to the host
+$cmd ssh-copy-id -f -i "$key" -o StrictHostKeyChecking=no "$user@$host"
