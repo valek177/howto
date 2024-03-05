@@ -1,0 +1,15 @@
+TODO: make tutor
+https://stackoverflow.com/questions/54909780/print-values-of-struct-type-in-gdb-using-address
+https://codelearn.me/2018/02/24/show-string-in-memory.html
+https://stackoverflow.com/questions/2420813/using-gdb-to-single-step-assembly-code-outside-specified-executable-causes-error
+https://stackoverflow.com/questions/5429137/how-to-print-register-values-in-gdb
+https://stackoverflow.com/questions/4116632/is-it-possible-to-jump-skip-in-gdb-debugger
+
+https://habr.com/ru/articles/535960/
+https://cheatography.com/cactuarnation/cheat-sheets/gdb-and-pwndbg/
+https://browserpwndbg.readthedocs.io/en/docs/
+https://github.com/cs01/gdbgui/
+https://github.com/rohanrhu/gdb-frontend
+https://sourceware.org/gdb/current/onlinedocs/gdb.html
+https://sourceware.org/gdb/current/onlinedocs/gdb.pdf
+https://sourceware.org/gdb/current/onlinedocs/refcard.pdf
