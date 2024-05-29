@@ -1,0 +1,3 @@
+Вывести какие файлы/папки сколько памяти занимают 
+
+du -s *|sort -nr|cut -f 2-|while read a;do du -hs "$a";done
