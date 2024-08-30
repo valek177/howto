@@ -13,3 +13,11 @@ https://github.com/rohanrhu/gdb-frontend
 https://sourceware.org/gdb/current/onlinedocs/gdb.html
 https://sourceware.org/gdb/current/onlinedocs/gdb.pdf
 https://sourceware.org/gdb/current/onlinedocs/refcard.pdf
+
+
+1. Устанавливаем gdb (sudo dnf install gdb)
+2. Подсасываемся к процессу sudo gdb --pid=<pid> (если сервис, то дб запущен не в vscode, а бинарником)
+3. Для инфы - info functions; info args; info break
+4. Расставляем breakpoints: b <func_name>
+5. Отладка: step (s), next (n)
+until | u number_of_list_string
