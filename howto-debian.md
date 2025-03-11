@@ -93,6 +93,47 @@ GRUB_DISABLE_OS_PROBER=false
 sudo update-grub
 ```
 
+## Настройка VPN (wireguard)
+Общая информация https://wiki.debian.org/WireGuard
+Имеем конфиг VPN (.conf)
+https://www.cyberciti.biz/faq/how-to-import-wireguard-profile-using-nmcli-on-linux/
+1. Создаем соединение 
+```
+sudo nmcli connection import type wireguard file "$file"
+```
+2. Поднимаем его
+```
+nmcli connection up valek-debian-vpn
+```
+3. Если не хотим автостарта после ребута
+```
+sudo nmcli conn modify valek-debian-vpn connection.autoconnect no
+```
+Если firezone:
+https://www.firezone.dev/docs/user-guides/client-instructions
+
+## Если не работают вебка и микрофон
+1. Чекнуть дрова
+https://unix.stackexchange.com/questions/653540/webcam-not-recognized-on-debian-11-sid
+```
+apt install firmware-linux firmware-realtek
+```
+2. Можно запустить Cheese, должен запускаться если все ок
+3. Как протестить микрофон:
+```
+arecord -vv -fdat foo.wav
+```
+https://forums.fedoraforum.org/showthread.php?258562-How-can-I-test-if-my-mic-is-working
+## VS Code ssh remote
+```
+https://code.visualstudio.com/docs/remote/ssh
+```
+## Копирование файлов с прогрессом
+```
+rsync -ah --progress source destination
+```
+https://askubuntu.com/questions/17275/how-to-show-the-transfer-progress-and-speed-when-copying-files-with-cp
+
 ## Ссылки
 
 - [How To Add a User to Sudoers On Debian 10 Buster](https://devconnected.com/how-to-add-a-user-to-sudoers-on-debian-10-buster/)
