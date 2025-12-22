@@ -133,6 +133,10 @@ https://code.visualstudio.com/docs/remote/ssh
 rsync -ah --progress source destination
 ```
 https://askubuntu.com/questions/17275/how-to-show-the-transfer-progress-and-speed-when-copying-files-with-cp
+## Посмотреть размер файлов/директорий от большего к меньшему - для текущей директории
+```
+sudo du -s *|sort -nr|cut -f 2-|while read a;do du -hs "$a";done
+```
 
 ## Ссылки
 
