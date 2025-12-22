@@ -137,7 +137,12 @@ https://askubuntu.com/questions/17275/how-to-show-the-transfer-progress-and-spee
 ```
 sudo du -s *|sort -nr|cut -f 2-|while read a;do du -hs "$a";done
 ```
-
+# Настройка принтера
+## HP Laserjet P1102w
+настройка через CUPS
+```
+http://localhost:631/admin
+```
 ## Ссылки
 
 - [How To Add a User to Sudoers On Debian 10 Buster](https://devconnected.com/how-to-add-a-user-to-sudoers-on-debian-10-buster/)
