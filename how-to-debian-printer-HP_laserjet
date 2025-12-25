@@ -1,0 +1,57 @@
+# Инструкция по подключению HP LaserJet через Wi-Fi в Debian через CUPS (from deepseek)
+1. Подготовка системы
+```
+sudo apt update
+sudo apt install cups hplip hplip-gui
+```
+2. Настройка прав доступа
+```
+# Добавьте пользователя в группу lpadmin
+sudo usermod -a -G lpadmin $USER
+# Перезапустите CUPS
+sudo systemctl restart cups
+# Включите автозапуск CUPS
+sudo systemctl enable cups
+```
+3. Подготовка принтера
+• Убедитесь, что принтер включен и подключен к той же Wi-Fi сети, что и
+компьютер
+• Узнайте IP�адрес принтера (через меню принтера или роутера)
+4. Добавление принтера через веб-интерфейс CUPS
+Откройте браузер и перейдите по адресу: http://localhost:631
+Нажмите "Administration" → "Add Printer"
+Авторизуйтесь (логин/пароль пользователя Debian)
+Выберите "Internet Printing Protocol (ipp)" или "AppSocket/HP JetDirect"
+В поле соединения введите:
+◦ Для IPP� ipp://IP-адрес-принтера/ipp/print
+◦ Для JetDirect: socket://IP-адрес-принтера:91005. Или через командную строку
+# Установите плагин HP (если требуется)
+sudo hp-plugin
+# Добавление принтера
+sudo hp-setup -i
+# Следуйте инструкциям мастера, выберите сетевой принтер
+6. Альтернативный метод через hplip-gui
+sudo hp-toolbox
+# или
+hplip-gui
+Затем в графическом интерфейсе выберите "Setup Device" → "Network" →
+"Wireless"
+7. Проверка подключения
+# Проверьте список принтеров
+lpstat -t
+# Тестовая печать
+lp -d HP_LaserJet_Printer /etc/nsswitch.conf
+Решение возможных проблем:
+Если принтер не обнаружен:
+# Поиск принтеров в сети
+sudo hp-probe -i -n
+Проверьте фаервол:
+sudo ufw allow 631/tcpДрайверы для конкретных моделей:
+# Для старых LaserJet (PCL)
+sudo apt install printer-driver-ptouch
+# Для PostScript принтеров
+sudo apt install printer-driver-postscript-hp
+Просмотр логов для диагностики:
+sudo tail -f /var/log/cups/error_log
+После настройки принтер должен появиться в списке устройств печати всех
+приложений.
